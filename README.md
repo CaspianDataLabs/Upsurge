@@ -1,16 +1,16 @@
-# reporter
+# Upsurge
 
 <div align="center">
 
-[![Build status](https://github.com/kwierman/reporter/workflows/build/badge.svg?branch=master&event=push)](https://github.com/kwierman/reporter/actions?query=workflow%3Abuild)
-[![Python Version](https://img.shields.io/pypi/pyversions/reporter.svg)](https://pypi.org/project/reporter/)
-[![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/kwierman/reporter/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
+[![Build status](https://github.com/CaspianDataLabs/Upsurge/workflows/build/badge.svg?branch=master&event=push)](https://github.com/CaspianDataLabs/Upsurge/actions?query=workflow%3Abuild)
+[![Python Version](https://img.shields.io/pypi/pyversions/Upsurge.svg)](https://pypi.org/project/Upsurge/)
+[![Dependencies Status](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)](https://github.com/CaspianDataLabs/Upsurge/pulls?utf8=%E2%9C%93&q=is%3Apr%20author%3Aapp%2Fdependabot)
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Security: bandit](https://img.shields.io/badge/security-bandit-green.svg)](https://github.com/PyCQA/bandit)
-[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/kwierman/reporter/blob/master/.pre-commit-config.yaml)
-[![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/kwierman/reporter/releases)
-[![License](https://img.shields.io/github/license/kwierman/reporter)](https://github.com/kwierman/reporter/blob/master/LICENSE)
+[![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/CaspianDataLabs/Upsurge/blob/master/.pre-commit-config.yaml)
+[![Semantic Versions](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--versions-e10079.svg)](https://github.com/CaspianDataLabs/Upsurge/releases)
+[![License](https://img.shields.io/github/license/CaspianDataLabs/Upsurge)](https://github.com/CaspianDataLabs/Upsurge/blob/master/LICENSE)
 ![Coverage Report](assets/images/coverage.svg)
 
 Scripted Report Generator
@@ -46,7 +46,7 @@ make codestyle
 git add .
 git commit -m ":tada: Initial commit"
 git branch -M main
-git remote add origin https://github.com/kwierman/reporter.git
+git remote add origin https://github.com/CaspianDataLabs/Upsurge.git
 git push -u origin main
 ```
 
@@ -109,56 +109,56 @@ Articles:
 ### Development features
 
 - Supports for `Python 3.9` and higher.
-- [`Poetry`](https://python-poetry.org/) as the dependencies manager. See configuration in [`pyproject.toml`](https://github.com/kwierman/reporter/blob/master/pyproject.toml) and [`setup.cfg`](https://github.com/kwierman/reporter/blob/master/setup.cfg).
+- [`Poetry`](https://python-poetry.org/) as the dependencies manager. See configuration in [`pyproject.toml`](https://github.com/CaspianDataLabs/Upsurge/blob/master/pyproject.toml) and [`setup.cfg`](https://github.com/CaspianDataLabs/Upsurge/blob/master/setup.cfg).
 - Automatic codestyle with [`black`](https://github.com/psf/black), [`isort`](https://github.com/timothycrosley/isort) and [`pyupgrade`](https://github.com/asottile/pyupgrade).
 - Ready-to-use [`pre-commit`](https://pre-commit.com/) hooks with code-formatting.
 - Type checks with [`mypy`](https://mypy.readthedocs.io); docstring checks with [`darglint`](https://github.com/terrencepreilly/darglint); security checks with [`safety`](https://github.com/pyupio/safety) and [`bandit`](https://github.com/PyCQA/bandit)
 - Testing with [`pytest`](https://docs.pytest.org/en/latest/).
-- Ready-to-use [`.editorconfig`](https://github.com/kwierman/reporter/blob/master/.editorconfig), [`.dockerignore`](https://github.com/kwierman/reporter/blob/master/.dockerignore), and [`.gitignore`](https://github.com/kwierman/reporter/blob/master/.gitignore). You don't have to worry about those things.
+- Ready-to-use [`.editorconfig`](https://github.com/CaspianDataLabs/Upsurge/blob/master/.editorconfig), [`.dockerignore`](https://github.com/CaspianDataLabs/Upsurge/blob/master/.dockerignore), and [`.gitignore`](https://github.com/CaspianDataLabs/Upsurge/blob/master/.gitignore). You don't have to worry about those things.
 
 ### Deployment features
 
 - `GitHub` integration: issue and pr templates.
-- `Github Actions` with predefined [build workflow](https://github.com/kwierman/reporter/blob/master/.github/workflows/build.yml) as the default CI/CD.
-- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`](https://github.com/kwierman/reporter/blob/master/Makefile#L89). More details in [makefile-usage](#makefile-usage).
-- [Dockerfile](https://github.com/kwierman/reporter/blob/master/docker/Dockerfile) for your package.
+- `Github Actions` with predefined [build workflow](https://github.com/CaspianDataLabs/Upsurge/blob/master/.github/workflows/build.yml) as the default CI/CD.
+- Everything is already set up for security checks, codestyle checks, code formatting, testing, linting, docker builds, etc with [`Makefile`](https://github.com/CaspianDataLabs/Upsurge/blob/master/Makefile#L89). More details in [makefile-usage](#makefile-usage).
+- [Dockerfile](https://github.com/CaspianDataLabs/Upsurge/blob/master/docker/Dockerfile) for your package.
 - Always up-to-date dependencies with [`@dependabot`](https://dependabot.com/). You will only [enable it](https://docs.github.com/en/github/administering-a-repository/enabling-and-disabling-version-updates#enabling-github-dependabot-version-updates).
-- Automatic drafts of new releases with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter). You may see the list of labels in [`release-drafter.yml`](https://github.com/kwierman/reporter/blob/master/.github/release-drafter.yml). Works perfectly with [Semantic Versions](https://semver.org/) specification.
+- Automatic drafts of new releases with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter). You may see the list of labels in [`release-drafter.yml`](https://github.com/CaspianDataLabs/Upsurge/blob/master/.github/release-drafter.yml). Works perfectly with [Semantic Versions](https://semver.org/) specification.
 
 ### Open source community features
 
-- Ready-to-use [Pull Requests templates](https://github.com/kwierman/reporter/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and several [Issue templates](https://github.com/kwierman/reporter/tree/master/.github/ISSUE_TEMPLATE).
+- Ready-to-use [Pull Requests templates](https://github.com/CaspianDataLabs/Upsurge/blob/master/.github/PULL_REQUEST_TEMPLATE.md) and several [Issue templates](https://github.com/CaspianDataLabs/Upsurge/tree/master/.github/ISSUE_TEMPLATE).
 - Files such as: `LICENSE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, and `SECURITY.md` are generated automatically.
-- [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/kwierman/reporter/blob/master/.github/.stale.yml).
+- [`Stale bot`](https://github.com/apps/stale) that closes abandoned issues after a period of inactivity. (You will only [need to setup free plan](https://github.com/marketplace/stale)). Configuration is [here](https://github.com/CaspianDataLabs/Upsurge/blob/master/.github/.stale.yml).
 - [Semantic Versions](https://semver.org/) specification with [`Release Drafter`](https://github.com/marketplace/actions/release-drafter).
 
 ## Installation
 
 ```bash
-pip install -U reporter
+pip install -U Upsurge
 ```
 
 or install with `Poetry`
 
 ```bash
-poetry add reporter
+poetry add Upsurge
 ```
 
 Then you can run
 
 ```bash
-reporter --help
+Upsurge --help
 ```
 
 or with `Poetry`:
 
 ```bash
-poetry run reporter --help
+poetry run Upsurge --help
 ```
 
 ### Makefile usage
 
-[`Makefile`](https://github.com/kwierman/reporter/blob/master/Makefile) contains a lot of functions for faster development.
+[`Makefile`](https://github.com/kwierman/Upsurge/blob/master/Makefile) contains a lot of functions for faster development.
 
 <details>
 <summary>1. Download and remove Poetry</summary>
@@ -310,7 +310,7 @@ Remove docker image with
 make docker-remove
 ```
 
-More information [about docker](https://github.com/kwierman/reporter/tree/master/docker).
+More information [about docker](https://github.com/kwierman/Upsurge/tree/master/docker).
 
 </p>
 </details>
@@ -353,7 +353,7 @@ make cleanup
 
 ## 📈 Releases
 
-You can see the list of available releases on the [GitHub Releases](https://github.com/kwierman/reporter/releases) page.
+You can see the list of available releases on the [GitHub Releases](https://github.com/kwierman/Upsurge/releases) page.
 
 We follow [Semantic Versions](https://semver.org/) specification.
 
@@ -370,26 +370,26 @@ We use [`Release Drafter`](https://github.com/marketplace/actions/release-drafte
 |            `documentation`            |    📝 Documentation     |
 |            `dependencies`             | ⬆️ Dependencies updates |
 
-You can update it in [`release-drafter.yml`](https://github.com/kwierman/reporter/blob/master/.github/release-drafter.yml).
+You can update it in [`release-drafter.yml`](https://github.com/kwierman/Upsurge/blob/master/.github/release-drafter.yml).
 
 GitHub creates the `bug`, `enhancement`, and `documentation` labels for you. Dependabot creates the `dependencies` label. Create the remaining labels on the Issues tab of your GitHub repository, when you need them.
 
 ## 🛡 License
 
-[![License](https://img.shields.io/github/license/kwierman/reporter)](https://github.com/kwierman/reporter/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/kwierman/Upsurge)](https://github.com/kwierman/Upsurge/blob/master/LICENSE)
 
-This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/kwierman/reporter/blob/master/LICENSE) for more details.
+This project is licensed under the terms of the `MIT` license. See [LICENSE](https://github.com/kwierman/Upsurge/blob/master/LICENSE) for more details.
 
 ## 📃 Citation
 
 ```bibtex
-@misc{reporter,
+@misc{Upsurge,
   author = {kwierman},
   title = {Synthesizes and Solves Nonograms},
   year = {2025},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/kwierman/reporter}}
+  howpublished = {\url{https://github.com/kwierman/Upsurge}}
 }
 ```
 
