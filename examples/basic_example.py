@@ -10,7 +10,6 @@ from upsurge import (
     Page,
     Section,
     Text,
-    Image,
     Plot,
     Table,
     Link,

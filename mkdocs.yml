@@ -51,8 +51,11 @@ plugins:
 
 nav:
   - Home: index.md
-  - Getting Started: getting_started.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
   - API Reference: api.md
+  - Contributing: contributing.md
 
 extra:
   social:

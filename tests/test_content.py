@@ -1,6 +1,5 @@
 """Tests for content elements."""
 
-import pytest
 from upsurge.content.base import (
     Text,
     Image,

@@ -1,10 +1,9 @@
 """Tests for publishers."""
 
-import pytest
 import tempfile
 import os
 from pathlib import Path
-from upsurge import Report, Page, Text
+from upsurge import Report, Page
 from upsurge.publishers import MarkdownPublisher, HTMLPublisher, PDFPublisher
 
 
