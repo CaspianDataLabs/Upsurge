@@ -1,60 +1,62 @@
-name: Documentation
+name: Deploy Documentation
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "src/**"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  docs:
+  build:
+    name: Build Documentation
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
       - name: Install dependencies
-        run: uv sync --extra docs
+        run: uv sync
+
+      - name: Generate API reference
+        run: uv run python docs/gen_ref.py
 
       - name: Build documentation
-        run: uv run sphinx-build -b html docs dist/docs
+        run: uv run mkdocs build --strict
 
-      - name: Upload documentation
-        uses: actions/upload-artifact@v4
-        with:
-          name: documentation
-          path: dist/docs
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: docs
-    if: github.ref == 'refs/heads/main'
-
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: documentation
-          path: dist/docs
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload to GitHub Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/docs
+          path: site
 
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4

@@ -1,0 +1,60 @@
+site_name: Upsurge
+site_description: A Python package for creating multi-format reports with sections, text, images, plots, tables, and multiple pages
+site_author: Kevin Wierman
+site_url: https://github.com/kwierman/upsurge
+
+repo_url: https://github.com/kwierman/upsurge
+edit_uri: ""
+
+copyright: Copyright &copy; 2024 Kevin Wierman
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: indigo
+      accent: indigo
+      scheme: default
+    - media: "(prefers-color-scheme: dark)"
+      primary: deep orange
+      accent: deep orange
+      scheme: slate
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            members_order: source
+            docstring_style: numpy
+
+nav:
+  - Home: index.md
+  - Getting Started: getting_started.md
+  - API Reference: api.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kwierman/upsurge

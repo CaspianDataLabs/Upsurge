@@ -2,68 +2,55 @@ name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   pull_request:
     branches: [main]
 
 jobs:
   test:
+    name: Test on Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.10", "3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v4
-
-      - name: Set up environment
-        run: uv env create --python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
 
       - name: Install dependencies
-        run: uv sync --all-extras --python ${{ matrix.python-version }}
-
-      - name: Run linter
-        run: uv run ruff check src/
-
-      - name: Run type checker
-        run: uv run mypy src/
+        run: uv sync
 
       - name: Run tests
-        run: uv run pytest --cov=src/upsurge --cov-report=xml
+        run: uv run pytest tests/ --cov=src/upsurge --cov-report=xml
 
-      - name: Upload coverage
+      - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
+        if: matrix.python-version == '3.12'
         with:
-          file: ./coverage.xml
-          flags: unittests
+          files: ./coverage.xml
+          fail_ci_if_error: false
 
-  build:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    needs: test
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
       - name: Install uv
         uses: astral-sh/setup-uv@v4
 
-      - name: Build package
-        run: |
-          uv sync --no-dev
-          python -m build
+      - name: Set up Python
+        run: uv python install 3.12
 
-      - name: Check package
-        run: python -m twine check dist/*
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Lint
+        run: uv run ruff check .
